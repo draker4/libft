@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:47:57 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/09 10:36:14 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/09 15:34:11 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ int	main(void)
 	printf("dstcat = %zu\n", cat);
 	printf("toupper = %d\n", ft_toupper('d'));
 	printf("tolower = %d\n", ft_tolower('U'));
-	char *p = ft_strchr(chr, 'z');
-	printf("strchr = %s\n", p);
+	char *p = ft_strchr(chr, '\0');
+	printf("strchr =%s\n", p);
 	char *pp = ft_strrchr(chr, 't');
-	printf("strrchr = %s\n", pp);
+	printf("strrchr =%s\n", pp);
 
 	char	s1[50] = "salut ca va ?";
 	char	s2[50] = "salut sa va ?";
@@ -102,6 +102,24 @@ int	main(void)
 	char strdup1[50] = "chaine a cor";
 	printf("strdup = %s\n", ft_strdup(strdup1));
 
-	char	sub[50] = "voici la chaine a prendre en compte";
-	printf("substr = %s\n", ft_substr(sub, 50, 50));
+	char	sub[50] = "voicilachaineaprendreencompte";
+	printf("substr = %s\n", ft_substr(sub, 5, 10));
+
+	char	join1[50] = "salut tu fais quoi ?";
+	char	join2[50] = "Je code pourquoi ?";
+	printf("strjoin = %s\n", ft_strjoin(join1, join2));
+
+	char	trim[50] = " ,.,.gfgf,., ";
+	char	trimset[50] = " .,;uj?";
+	printf("strtrim =%s\n", ft_strtrim(trim, trimset));
+
+	char	split[50] = "  couper cette    chaine ste plait !  ";
+	char	splitc = ' ';
+	int		i = 0;
+	char	**splittest = ft_split(split, splitc);
+	while (i < 7)
+	{
+		printf("split i = %d et str = %s\n", i, splittest[i]);
+		i++;
+	}
 }

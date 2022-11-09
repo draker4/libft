@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:25:20 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/09 10:32:22 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/09 13:12:43 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	i;
 	unsigned int	j;
 
-	str = malloc(sizeof(char) * (len + 1));
-	if (str == NULL)
+	if (len < ft_strlen(s) - start)
+		str = malloc(sizeof(char) * (len + 1));
+	else
+		str = malloc(sizeof(char) * (ft_strlen(s) - start + 1));
+	if (str == NULL || len == 0)
 		return (NULL);
 	i = 0;
 	while (i != start && s[i])
 		i++;
 	j = 0;
-	if (s[i] && len)
-	{
-		while (s[i] && len)
-		{
-			str[j++] = s[i++];
-			len--;
-		}
-	}
+	while (s[i] && len--)
+		str[j++] = s[i++];
 	str[j] = '\0';
 	return (str);
 }

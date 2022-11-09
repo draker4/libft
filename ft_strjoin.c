@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 17:03:28 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/09 15:33:00 by bperriol         ###   ########lyon.fr   */
+/*   Created: 2022/11/09 12:03:33 by bperriol          #+#    #+#             */
+/*   Updated: 2022/11/09 13:18:00 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	char	*str;
 	size_t	i;
-	void	*p;
+	size_t	j;
 
-	if (count * size == 0)
-	{
-		p = malloc(0);
-		return (p);
-	}
-	if (count * size > SIZE_MAX)
-		return (NULL);
+	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	i = 0;
-	p = malloc(size * count);
-	if (p == NULL)
-		return (NULL);
-	while (i < count * size)
-		((unsigned char *)p)[i++] = 0;
-	return (p);
+	j = 0;
+	while (i < ft_strlen(s1))
+	{
+		str[i] = ((char *)s1)[i];
+		i++;
+	}
+	while (i < ft_strlen(s1) + ft_strlen(s2))
+		str[i++] = ((char *)s2)[j++];
+	str[i] = '\0';
+	return (str);
 }
