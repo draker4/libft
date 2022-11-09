@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:19:42 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/09 15:31:46 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/09 16:00:34 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static char	**ft_cut(const char *s, char c, char **split)
 			if (split[nb] == NULL)
 				return (NULL);
 			k = 0;
-			printf("save = %zu et i = %zu\n", save, i);
 			while (save < i)
 				split[nb][k++] = s[save++];
 			split[nb++][k] = '\0';

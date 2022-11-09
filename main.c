@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:47:57 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/09 15:34:11 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/09 17:43:26 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+char	ft_mapi(unsigned int i, char c)
+{
+	if (i == 5 && c == 'a')
+		c = 'e';
+	return (c);
+}
+
+void	ft_iteri(unsigned int i, char *s)
+{
+	if (s[i] == 'a')
+		s[i] = 'm';
+}
 
 int	main(void)
 {
@@ -115,11 +131,25 @@ int	main(void)
 
 	char	split[50] = "  couper cette    chaine ste plait !  ";
 	char	splitc = ' ';
-	int		i = 0;
 	char	**splittest = ft_split(split, splitc);
-	while (i < 7)
-	{
-		printf("split i = %d et str = %s\n", i, splittest[i]);
-		i++;
-	}
+	printf("split =%s\n", splittest[3]);
+
+	printf("itoa = %s\n", ft_itoa(-2147483648));
+	
+	char	mapi[50] = "aaaaaaaaa";
+	char	(*f_ptr)(unsigned int, char);
+	
+	f_ptr = &ft_mapi;
+	printf("strmapi = %s\n", ft_strmapi(mapi, f_ptr));
+	
+	char iteri[50] = "changer les aaaaaaaaaa en m haha";
+	void	(*f_ptr2)(unsigned int, char *);
+	f_ptr2 = &ft_iteri;
+	ft_striteri(iteri, f_ptr2);
+	printf("ft_iteri = %s\n", iteri);
+	
+	ft_putchar_fd('g', 1);
+	ft_putchar_fd('\n', 1);
+	ft_putstr_fd("salut ca marche ?\n", open("text.txt", O_WRONLY | O_CREAT));
+	ft_putendl_fd("ecris ca vas y", open("text.txt", O_WRONLY | O_CREAT));
 }
