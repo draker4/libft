@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:47:57 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/10 11:53:15 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 13:58:21 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,33 @@ void	ft_iteri(unsigned int i, char *s)
 void	ft_delone(void *content)
 {
 	free(content);
+}
+
+void	ft_iterlst(void *content)
+{
+	int	i;
+
+	i = 0;
+	while (((char *)content)[i] != '\0')
+	{
+		if (((char *)content)[i] == 'e')
+			((char *)content)[i] = 'j';
+		i++;
+	}
+}
+
+void	*ft_maplist(void *content)
+{
+	int	i;
+
+	i = 0;
+	while (((char *)content)[i] != '\0')
+	{
+		if (((char *)content)[i] == 'j')
+			((char *)content)[i] = 'k';
+		i++;
+	}
+	return (content);
 }
 
 int	main(void)
@@ -172,12 +199,13 @@ int	main(void)
 	ft_lstadd_front(&begin, before3);
 	ft_lstadd_front(&begin, before4);
 
-	t_list	*back = ft_lstnew(ft_strdup("last"));
+	t_list	*back = ft_lstnew(ft_strdup("laste"));
 	ft_lstadd_back(&begin, back);
 	
 	t_list *save_begin = ft_lstnew(ft_strdup("save"));
 	save_begin->next = begin;
-	ft_lstclear(&begin, &ft_delone);
+	//ft_lstclear(&begin, &ft_delone);
+	ft_lstiter(begin, &ft_iterlst);
 	while (begin)
 	{
 		printf("list content = %s\n", begin->content);
@@ -188,4 +216,10 @@ int	main(void)
 	t_list	*last = ft_lstlast(begin);
 	printf("lstlast = %s\n", last->content);
 
+	t_list	*copylst = ft_lstmap(begin, &ft_maplist, &ft_delone);
+	while (copylst)
+	{
+		printf("copylist = %s\n", copylst->content);
+		copylst = copylst->next;
+	}
 }
