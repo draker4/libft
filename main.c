@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:47:57 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/09 17:43:26 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 11:53:15 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	ft_iteri(unsigned int i, char *s)
 {
 	if (s[i] == 'a')
 		s[i] = 'm';
+}
+
+void	ft_delone(void *content)
+{
+	free(content);
 }
 
 int	main(void)
@@ -152,4 +157,35 @@ int	main(void)
 	ft_putchar_fd('\n', 1);
 	ft_putstr_fd("salut ca marche ?\n", open("text.txt", O_WRONLY | O_CREAT));
 	ft_putendl_fd("ecris ca vas y", open("text.txt", O_WRONLY | O_CREAT));
+	ft_putnbr_fd(-256486, 1);
+
+	char *fcontent = malloc(sizeof("salut !"));
+	fcontent = "salut";
+	t_list	*begin = ft_lstnew(fcontent);
+	printf("\nlstnew = %s\n", begin->content);
+	t_list	*before1 = ft_lstnew(ft_strdup("before1 !"));
+	t_list	*before2 = ft_lstnew(ft_strdup("before2 !"));
+	t_list	*before3 = ft_lstnew(ft_strdup("before3 !"));
+	t_list	*before4 = ft_lstnew(ft_strdup("before4 !"));
+	ft_lstadd_front(&begin, before1);
+	ft_lstadd_front(&begin, before2);
+	ft_lstadd_front(&begin, before3);
+	ft_lstadd_front(&begin, before4);
+
+	t_list	*back = ft_lstnew(ft_strdup("last"));
+	ft_lstadd_back(&begin, back);
+	
+	t_list *save_begin = ft_lstnew(ft_strdup("save"));
+	save_begin->next = begin;
+	ft_lstclear(&begin, &ft_delone);
+	while (begin)
+	{
+		printf("list content = %s\n", begin->content);
+		begin = begin->next;
+	}
+	begin = save_begin->next;
+	printf("lstsize = %d\n", ft_lstsize(begin));
+	t_list	*last = ft_lstlast(begin);
+	printf("lstlast = %s\n", last->content);
+
 }
