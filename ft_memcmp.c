@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:55:36 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/09 17:30:26 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 18:46:12 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 		p2++;
 		i++;
 	}
-	if (p1 != p2)
+	if (p1 != p2 && i < n)
 		return (*p1 - *p2);
 	return (0);
 }

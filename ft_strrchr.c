@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:27:12 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/08 15:32:17 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 19:39:31 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ char	*ft_strrchr(const char *s, int c)
 			return (p);
 		p--;
 	}
+	if (*p == c)
+		return (p);
 	return (NULL);
 }

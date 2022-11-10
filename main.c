@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:47:57 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/10 13:58:21 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 19:42:05 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,11 @@ int	main(void)
 	char str2[50] = "salut ca va ouais et toi youpi bisous tchao !";
 	char	dst[50];
 	char	src[] = "SAlut copie ca ste plait";
-	char	dstcat[50] = "conc :";
-	char	srccat[] = "ca oui";
+	char	dstcat[15];
+	memset(dstcat, 0, 15);
+	memset(dstcat, 'r', 6);
+	dstcat[11] = 'a';
+	char	srccat[] = "lorem";
 	char	chr[50] = "yo cherche la lettre";
 
 
@@ -91,26 +94,33 @@ int	main(void)
 	char str4[50] = "salut ca va ouais et toi youpi bisous tchao !";
 	char dest[50] = "aaaaaaaaaaaaaaaaaaaaaaaaaa";
 	printf("memcpy = %s\n", ft_memcpy(dest, str3, 14));
+	
 	printf("str4 = %s\n", str4);
 	ft_memmove(str4 + 12, str4 + 15, 5);
 	printf("memmove str4 + 12, str4 + 15, 2= %s\n\n\n", str4);
 	printf("src = %s\n", src);
 	size_t a = ft_strlcpy(dst, src, 0);
+	
+	ft_strlcpy(dstcat, "lorem", 5);
+	printf("strlcpy = %s\n", dstcat);
+	
 	printf("dst = %s\n", dst);
 	printf("dst = %zu\n", a);
-	size_t cat = ft_strlcat(dstcat, srccat, 8);
+	size_t cat = ft_strlcat(dstcat, srccat, 15);
 	printf("dstcat = %s\n", dstcat);
 	printf("dstcat = %zu\n", cat);
 	printf("toupper = %d\n", ft_toupper('d'));
 	printf("tolower = %d\n", ft_tolower('U'));
-	char *p = ft_strchr(chr, '\0');
+	char *p = ft_strchr(chr, 'b');
 	printf("strchr =%s\n", p);
-	char *pp = ft_strrchr(chr, 't');
+	char *pp = ft_strrchr("bonjour", 'o');
 	printf("strrchr =%s\n", pp);
 
 	char	s1[50] = "salut ca va ?";
 	char	s2[50] = "salut sa va ?";
 	printf("strncmp = %d\n", ft_strncmp(s1, s2, 7));
+	
+	printf("strncmp = %d\n", ft_strncmp("test\200", "test\0", 6));
 
 	char data[] = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
     const unsigned int size = 10;
@@ -124,12 +134,18 @@ int	main(void)
     if ( found != NULL ) {
         printf( "La valeur à la position calculée est %d\n", *((char *) found) );
     }
+	
+	char *strtest1 = ft_memchr("bonjourno", 'n', 2);
+	char *strtest2 = memchr("bonjourno", 'n', 2);
+	printf("test memchr %s et %s\n", strtest1, strtest2);
 
 	int array1 [] = { 54, 85, 20, 63, 21 };
 	int array2 [] = { 54, 85, 15, 63, 21 };
     size_t sizearray = sizeof( int ) * 5;
 
 	printf("memcmp array 1 array 2 = %d\n", ft_memcmp(array1, array2, sizearray));
+
+	printf("test memcmp %d et %d \n", memcmp("abcdefghij", "abcdefgxyz", 7), ft_memcmp("abcdefghij", "abcdefgxyz", 7));
 
 	char	haystack[50] = "cherche tata dans cette phrase please !";
 	char	needle[5] = "tte";

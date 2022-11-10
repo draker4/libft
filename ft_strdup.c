@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 18:39:27 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/08 19:36:37 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 18:48:37 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strdup(const char *s1)
 	char	*str;
 	int		i;
 
-	str = malloc(sizeof(s1));
+	str = malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (str == NULL)
 		return (NULL);
 	i = 0;
