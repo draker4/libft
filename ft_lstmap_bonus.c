@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 13:24:44 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/10 14:03:55 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/11 14:56:32 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,16 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*begin;
 	t_list	*current;
 
-	if (lst == NULL)
-		return (NULL);
-	begin = ft_lstnew((*f)(lst->content));
-	begin->next = ft_lstnew((*f)(lst->next->content));
-	current = begin->next;
-	lst = lst->next;
-	while (lst->next)
+	begin = NULL;
+	while (lst)
 	{
-		current->next = ft_lstnew((*f)(lst->next->content));
-		if (current->next->content == NULL)
-			(*del)(current->next->content);
-		else
-			current = current->next;
+		current = ft_lstnew((*f)(lst->content));
+		ft_lstadd_back(&begin, current);
+		if (current == NULL)
+		{
+			ft_lstclear(&begin, del);
+			return (NULL);
+		}
 		lst = lst->next;
 	}
 	return (begin);

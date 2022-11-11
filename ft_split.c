@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:19:42 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/11 14:03:51 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/11 18:43:02 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@ static void	ft_find_next(char const *s, char c, size_t *i)
 			return ;
 		*i += 1;
 	}
+}
+
+static char	**ft_free(char **split, size_t nb)
+{
+	size_t	i;
+
+	i = 0;
+	while (i <= nb)
+		free(split[i++]);
+	free(split);
+	return (NULL);
 }
 
 static char	**ft_cut(const char *s, char c, char **split)
@@ -39,7 +50,7 @@ static char	**ft_cut(const char *s, char c, char **split)
 		{
 			split[nb] = malloc(sizeof(**split) * (i - save + 1));
 			if (split[nb] == NULL)
-				return (NULL);
+				return (ft_free(split, nb));
 			k = 0;
 			while (save < i)
 				split[nb][k++] = s[save++];
@@ -60,6 +71,8 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	nb_str = 0;
+	if (s == NULL)
+		return (NULL);
 	while (s[i])
 	{
 		save = i;

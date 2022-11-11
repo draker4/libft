@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:15:28 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/08 18:32:00 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/11 16:59:16 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,9 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	i = 0;
 	overlap = 0;
-	while (((unsigned char *)src)[i])
-	{
-		if (&(src[i]) == &(dst[0]))
-			overlap = 1;
-		i++;
-	}
-	if (overlap)
+	if ((!dst && !src) || (!dst && !src && len))
+		return (NULL);
+	if (dst > src)
 	{
 		while (len)
 		{

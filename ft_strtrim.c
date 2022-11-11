@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:18:50 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/11 12:26:02 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/11 18:42:29 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static size_t	ft_find_end(char const *s1, char const *set)
 	size_t	j;
 
 	i = 0;
-	while (s1[ft_strlen(s1) - 1 - i])
+	while (s1[ft_strlen(s1) - 1 - i] && i < ft_strlen(s1) - 1)
 	{
 		j = 0;
 		while (s1[ft_strlen(s1) - 1 - i] != set[j] && set[j])
@@ -57,6 +57,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	start;
 	size_t	end;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	start = ft_find_start(s1, set);
 	end = ft_find_end(s1, set);
 	str = malloc(sizeof(char) * (end - start + 1));

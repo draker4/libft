@@ -6,15 +6,15 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:40:36 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/11 10:37:51 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/11 17:07:13 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	result;
-	int	sign;
+	int				i;
+	unsigned int	result;
+	int				sign;
 
 	sign = 1;
 	result = 0;

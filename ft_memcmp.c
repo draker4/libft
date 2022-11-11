@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:55:36 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/10 18:46:12 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/11 17:05:27 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	p1 = (unsigned char *)s1;
 	p2 = (unsigned char *)s2;
 	i = 0;
-	while (*p1 == *p2 && i < n)
+	if (!s1 && !s2)
+		return (0);
+	while (*p1 == *p2 && i < n - 1)
 	{
 		p1++;
 		p2++;
