@@ -8,6 +8,10 @@ NAME		=	libft.a
 
 COMP_NAME	= 	output
 
+# ---- Directories ---- #
+
+DIR_OBJS	=	.objs/
+
 # ---- Files ---- #
 
 HEAD		=	libft.h 
@@ -72,18 +76,27 @@ ${COMP_NAME}	:	${OBJS} ${OBJS_BONUS} ${OBJS_OUTPUT} Makefile ${HEAD}
 
 # ---- Compiled Rules ---- #
 
-.c.o	:	Makefile ${HEAD}
-			${CC} ${CFLAGS} -I . -c $< -o $@
+${OBJS}			:	| ${DIR_OBJS}
+
+${OBJS_BONUS}	:	| ${DIR_OBJS}
+
+${OBJS_OUTPUT}	:	| ${DIR_OBJS}
+
+${DIR_OBJS}%.o	:	%.c ${HEAD} Makefile
+					${CC} ${CFLAGS} -I . -c $< -o $@
+
+${DIR_OBJS}		:
+					${MKDIR} ${DIR_OBJS}
 
 # ---- Usual Commands ---- #
 
 clean			:
-					${RM} ${OBJS} ${OBJS_BONUS}
+					${RM} ${DIR_OBJS}
 
 fclean			:	clean
 					${RM} ${NAME}
 
 clean_output	:	clean
-					${RM} ${OBJS_OUTPUT} text.txt output
+					${RM} ${DIR_OBJS} text.txt output
 
 re				:	fclean all

@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:47:57 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/10 19:42:05 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/11 14:03:25 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,34 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+void	iter(unsigned int i, char *c)
+{
+	static int indexArray[11] = {0};
+
+	if (i > 10 || indexArray[i] == 1)
+		write(1, "wrong index\n", 12);
+	else
+		indexArray[i] = 1;
+	if (*c >= 'a' && *c <= 'z')
+		*c = *c - 32;
+	else if (*c >= 'A' && *c <= 'Z')
+		*c = *c + 32;
+}
+
 char	ft_mapi(unsigned int i, char c)
 {
-	if (i == 5 && c == 'a')
-		c = 'e';
-	return (c);
+	static int indexArray[11] = {0};
+
+	if (i > 10 || indexArray[i] == 1)
+		write(1, "wrong index\n", 12);
+	else
+		indexArray[i] = 1;
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	else if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	else
+		return (c);
 }
 
 void	ft_iteri(unsigned int i, char *s)
@@ -120,7 +143,7 @@ int	main(void)
 	char	s2[50] = "salut sa va ?";
 	printf("strncmp = %d\n", ft_strncmp(s1, s2, 7));
 	
-	printf("strncmp = %d\n", ft_strncmp("test\200", "test\0", 6));
+	printf("strncmp = %d\n", ft_strncmp("test\200", "test\10", 6));
 
 	char data[] = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
     const unsigned int size = 10;
@@ -151,7 +174,7 @@ int	main(void)
 	char	needle[5] = "tte";
 	printf("strnstr = %s\n", ft_strnstr(haystack, needle, 30));
 
-	char	satoi[50] = " 	   		   -2147483648frjvrhvbcejdjnse fehr 6468";
+	char	satoi[50] = " 	   		   0485frjvrhvbcejdjnse fehr 6468";
 	printf("atoi = %d\n", ft_atoi(satoi));
 
 	int	*pcalloc = (int *) calloc(20, sizeof(int));
@@ -166,34 +189,37 @@ int	main(void)
 	char strdup1[50] = "chaine a cor";
 	printf("strdup = %s\n", ft_strdup(strdup1));
 
-	char	sub[50] = "voicilachaineaprendreencompte";
-	printf("substr = %s\n", ft_substr(sub, 5, 10));
+	char	sub[50] = "lorem ipsum dolor sit amet";
+	printf("substr = %s\n", ft_substr(sub, 7, 0));
 
-	char	join1[50] = "salut tu fais quoi ?";
+	char	join1[50] = "salut tu fais quoi?";
 	char	join2[50] = "Je code pourquoi ?";
 	printf("strjoin = %s\n", ft_strjoin(join1, join2));
 
-	char	trim[50] = " ,.,.gfgf,., ";
-	char	trimset[50] = " .,;uj?";
+	char	trim[50] = "    .   . .  ";
+	char	trimset[50] = " .";
 	printf("strtrim =%s\n", ft_strtrim(trim, trimset));
 
-	char	split[50] = "  couper cette    chaine ste plait !  ";
-	char	splitc = ' ';
-	char	**splittest = ft_split(split, splitc);
-	printf("split =%s\n", splittest[3]);
+	char	**sspp = ft_split("salut ya pas de u ici", 'z');
+	
+	int	isplit = 0;
+	while (sspp[isplit])
+		printf("split = %s\n", sspp[isplit++]);
+	printf("split = %s\n", sspp[isplit++]);
 
 	printf("itoa = %s\n", ft_itoa(-2147483648));
 	
-	char	mapi[50] = "aaaaaaaaa";
+	char	*mapi;
+	mapi = ft_strdup("LoReM iPsUm");
 	char	(*f_ptr)(unsigned int, char);
 	
 	f_ptr = &ft_mapi;
-	printf("strmapi = %s\n", ft_strmapi(mapi, f_ptr));
+	printf("strmapi =%s\n", ft_strmapi(mapi, f_ptr));
 	
-	char iteri[50] = "changer les aaaaaaaaaa en m haha";
+	char iteri[] = "LoReM iPsUm";
 	void	(*f_ptr2)(unsigned int, char *);
 	f_ptr2 = &ft_iteri;
-	ft_striteri(iteri, f_ptr2);
+	ft_striteri(iteri, &iter);
 	printf("ft_iteri = %s\n", iteri);
 	
 	ft_putchar_fd('g', 1);

@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:40:36 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/08 17:00:25 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/11 10:37:51 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		i++;
 	}
-	while (str[i] >= '1' && str[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 		result = result * 10 + str[i++] - 48;
 	return (result * sign);
 }

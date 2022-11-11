@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:27:09 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/09 16:39:32 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/11 11:00:22 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		cpy[i] = (*f)(i, s[i]);
 		i++;
 	}
+	cpy[i] = '\0';
 	return (cpy);
 }

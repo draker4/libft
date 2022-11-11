@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:09:17 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/10 11:50:55 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/11 13:38:16 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*save_begin;
+	t_list	*current;
 
-	save_begin = ft_lstnew(NULL);
-	save_begin->next = *lst;
-	while ((*lst)->next)
-		*lst = (*lst)->next;
-	(*lst)->next = new;
-	*lst = save_begin->next;
+	if (lst && *lst)
+	{
+		current = *lst;
+		while (current->next)
+			current = current->next;
+		current->next = new;
+	}
+	else if (lst)
+		*lst = new;
 }

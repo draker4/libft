@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:19:42 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/09 16:00:34 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/11 14:03:51 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	**ft_cut(const char *s, char c, char **split)
 	{
 		save = i;
 		ft_find_next(s, c, &i);
-		if (save - i)
+		if (i - save)
 		{
 			split[nb] = malloc(sizeof(**split) * (i - save + 1));
 			if (split[nb] == NULL)
@@ -45,7 +45,8 @@ static char	**ft_cut(const char *s, char c, char **split)
 				split[nb][k++] = s[save++];
 			split[nb++][k] = '\0';
 		}
-		i++;
+		if (s[i])
+			i++;
 	}
 	return (split);
 }
@@ -63,9 +64,10 @@ char	**ft_split(char const *s, char c)
 	{
 		save = i;
 		ft_find_next(s, c, &i);
-		if (save - i)
+		if (i - save)
 			nb_str++;
-		i++;
+		if (s[i])
+			i++;
 	}
 	split = malloc(sizeof(*split) * (nb_str + 1));
 	if (split == NULL)

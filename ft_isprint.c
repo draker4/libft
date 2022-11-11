@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bperriol <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:02:02 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/07 14:20:26 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/11 10:44:43 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isprint(int c)
 {
-	if (c >= 40 && c <= 176)
+	if (c >= 32 && c <= 126)
 		return (1);
 	return (0);
 }
