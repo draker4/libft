@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:54:30 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/08 18:38:39 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/14 10:48:36 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strchr(const char *s, int c)
 	p = (char *)s;
 	while (*p != '\0')
 	{
-		if (*p == c)
+		if (*p == c % 256)
 			return (p);
 		p++;
 	}

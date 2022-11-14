@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:03:28 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/09 15:33:00 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/14 10:40:35 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_calloc(size_t count, size_t size)
 		p = malloc(0);
 		return (p);
 	}
-	if (count * size > SIZE_MAX)
+	if (count > SIZE_MAX / size)
 		return (NULL);
 	i = 0;
 	p = malloc(size * count);

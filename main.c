@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:47:57 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/11 14:58:51 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/14 10:50:44 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	main(void)
 	memset(dstcat, 'r', 6);
 	dstcat[11] = 'a';
 	char	srccat[] = "lorem";
-	char	chr[50] = "yo cherche la lettre";
+	char	chr[] = "tripouille";
 
 
 	printf("isalpha c = %d\n", ft_isalpha(c));
@@ -134,9 +134,9 @@ int	main(void)
 	printf("dstcat = %zu\n", cat);
 	printf("toupper = %d\n", ft_toupper('d'));
 	printf("tolower = %d\n", ft_tolower('U'));
-	char *p = ft_strchr(chr, 'b');
+	char *p = ft_strchr(chr, 't' + 256);
 	printf("strchr =%s\n", p);
-	char *pp = ft_strrchr("bonjour", 'o');
+	char *pp = ft_strrchr("bonjour", 'b' + 256);
 	printf("strrchr =%s\n", pp);
 
 	char	s1[50] = "salut ca va ?";
