@@ -1,4 +1,4 @@
-.PHONY:	all clean fclean re
+.PHONY:	all clean fclean re bonus output clean_output
 
 # ******** VARIABLES ******** #
 
