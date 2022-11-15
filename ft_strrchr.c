@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:27:12 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/14 10:56:54 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/15 16:30:55 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
-	char	*p;
+	unsigned int	i;
+	char			*p;
 
 	i = 0;
-	p = (char *)s;
-	while (*p != '\0')
-		p++;
-	if (c == '\0')
-		return (p);
-	while (*p != s[0])
+	p = 0;
+	while (s[i])
 	{
-		if (*p == c % 256)
-			return (p);
-		p--;
+		if (s[i] == (char)c)
+			p = &((char *)s)[i];
+		i++;
 	}
-	if (*p == c % 256)
-		return (p);
-	return (NULL);
+	if (!(char)c)
+		p = &((char *)s)[i];
+	return (p);
 }
