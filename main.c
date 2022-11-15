@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:47:57 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/14 10:50:44 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/14 14:40:47 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,8 +174,7 @@ int	main(void)
 	char	needle[5] = "tte";
 	printf("strnstr = %s\n", ft_strnstr(haystack, needle, 30));
 
-	char	satoi[50] = " 	   		   0485frjvrhvbcejdjnse fehr 6468";
-	printf("atoi = %d\n", ft_atoi(satoi));
+	printf("atoi = %d\n", ft_atoi("  	  		492233720368524775808aghd"));
 
 	int	*pcalloc = (int *) calloc(20, sizeof(int));
 	printf("ii = %d et p calloc = %d\n\n\n", 5, pcalloc[5]);

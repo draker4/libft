@@ -6,15 +6,25 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:40:36 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/11 17:07:13 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/14 14:40:05 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+int	static	ft_overflow(int sign)
+{
+	if (sign < 0)
+		return ((int)LONG_MIN);
+	else
+		return ((int)LONG_MAX);
+}
+
 int	ft_atoi(const char *str)
 {
-	int				i;
-	unsigned int	result;
-	int				sign;
+	int			i;
+	long long	result;
+	int			sign;
 
 	sign = 1;
 	result = 0;
@@ -28,6 +38,12 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
-		result = result * 10 + str[i++] - 48;
-	return (result * sign);
+	{
+		if (result != (result * 10 + str[i] - 48) / 10)
+			return (ft_overflow(sign));
+		else
+			result = result * 10 + str[i] - 48;
+		i++;
+	}
+	return ((int)(result * sign));
 }
