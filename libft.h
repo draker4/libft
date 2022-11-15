@@ -6,13 +6,12 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:35:58 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/14 13:47:21 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/11/15 16:32:57 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
